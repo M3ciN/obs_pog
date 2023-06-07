@@ -93,7 +93,7 @@
 
             <div class="form-group mt-2 mb-3">
                 <label for="exampleFormControlInput1">Imię:</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1">
+                <input type="text" class="form-control" id="exampleFormControlInput1">
             </div>
             <div class="form-group mt-2 mb-3">
                 <label for="exampleFormControlInput1">E-mail:</label>

@@ -12,6 +12,7 @@
                     <th>ID</th>
                     <th>Imię</th>
                     <th>Email</th>
+                    <th></th>
                     <!-- Dodaj inne pola, które chcesz wyświetlić -->
                 </tr>
             </thead>
@@ -21,6 +22,7 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
+                        <td><a href="{{ route('users.edit', $user->id) }}">Edytuj</a></td>
                         <!-- Dodaj inne pola, które chcesz wyświetlić -->
                     </tr>
                 @endforeach

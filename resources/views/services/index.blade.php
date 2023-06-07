@@ -8,17 +8,21 @@
     <table class="table bg-black text-white table-bordered">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Nazwa usługi</th>
                 <th>Opis</th>
                 <th>Cena(zł)</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach($services as $service)
             <tr>
+                <td>{{ $service->id }}</td>
                 <td>{{ $service->name }}</td>
                 <td>{{ $service->opis }}</td>
                 <td>{{ $service->price }}</td>
+                <td><a href="{{ route('services.edit', $service->id) }}">Edytuj</a></td>
             </tr>
             @endforeach
         </tbody>

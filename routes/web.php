@@ -36,3 +36,9 @@ Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.fo
 Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
 
 Route::get('/users', [UserController::class, 'showUsersWithRoleTwo'])->name('users.index')->middleware('admin');
+
+Route::get('/users/{id}/edit', [UserController::class,'edit'])->name('users.edit');
+Route::put('/users/{id}', [UserController::class,'update'])->name('users.update');
+
+Route::get('/services/{id}/edit', [ServicesController::class,'edit'])->name('services.edit');
+Route::put('/services/{id}', [ServicesController::class,'update'])->name('services.update');
