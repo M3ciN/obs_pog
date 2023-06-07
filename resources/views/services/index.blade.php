@@ -16,9 +16,9 @@
         <tbody>
             @foreach($services as $service)
             <tr>
-                <td>{{ $service->nazwa }}</td>
+                <td>{{ $service->name }}</td>
                 <td>{{ $service->opis }}</td>
-                <td>{{ $service->cena }}</td>
+                <td>{{ $service->price }}</td>
             </tr>
             @endforeach
         </tbody>
