@@ -35,10 +35,20 @@ Route::get('/services', [ServicesController::class, 'index'])->name('services.in
 Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.form');
 Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
 
-Route::get('/users', [UserController::class, 'showUsersWithRoleTwo'])->name('users.index')->middleware('admin');
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/users', [UserController::class, 'showUsersWithRoleTwo'])->name('users.index')->middleware('admin');
+    Route::get('/users/{id}/edit', [UserController::class,'edit'])->name('users.edit');
+    Route::put('/users/{id}', [UserController::class,'update'])->name('users.update');
+    Route::get('/users/create', [UserController::class,'create'])->name('users.create');
+    Route::post('/users', [UserController::class,'store'])->name('users.store');
+    Route::delete('/users/{id}', [UserController::class,'destroy'])->name('users.destroy');
 
-Route::get('/users/{id}/edit', [UserController::class,'edit'])->name('users.edit');
-Route::put('/users/{id}', [UserController::class,'update'])->name('users.update');
+});
 
-Route::get('/services/{id}/edit', [ServicesController::class,'edit'])->name('services.edit');
-Route::put('/services/{id}', [ServicesController::class,'update'])->name('services.update');
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/services/{id}/edit', [ServicesController::class,'edit'])->name('services.edit');
+    Route::put('/services/{id}', [ServicesController::class,'update'])->name('services.update');
+    Route::delete('/services/{id}', [ServicesController::class,'destroy'])->name('services.destroy');
+    Route::post('/services', [ServicesController::class,'store'])->name('services.store');
+    Route::get('/services/create', [ServicesController::class,'create'])->name('services.create');
+});

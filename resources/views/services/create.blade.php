@@ -11,8 +11,8 @@
 
               <div class="mb-md-5 mt-md-4 pb-5">
 
-                <h2 class="fw-bold mb-2 ">Edytowanie</h2>
-                <p class="text-white-50 mb-5">Edytujesz użytkownika o id {{ $user->id }}</p>
+                <h2 class="fw-bold mb-2 ">Dodawanie</h2>
+                <p class="text-white-50 mb-5">Dodajesz nową usługę</p>
 
               @if ($errors->any())
                 <div class="row d-flex justify-content-center">
@@ -29,25 +29,25 @@
               @endif
 
 
-          <form method="POST" action="{{ route('users.update', $user->id) }}" class="needs-validation" novalidate>
+          <form method="POST" action="{{ route('services.store') }}" class="needs-validation" novalidate>
                   @csrf
-                  @method('PUT')
+
                 <div class="form-outline form-white mb-4">
-                    <label for="name">Imię:</label>
-                    <input type="text" id="name" name="name" value="{{ $user->name }}">
+                    <label for="name">Nazwa:</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" value="{{ $user->email }}">
+                    <label for="email">Opis:</label>
+                    <input type="text" id="opis" name="opis">
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                    <label for="password">Nowe hasło:</label>
-                    <input type="password" id="password" name="password" value="{{ $user->password }}">
+                    <label for="email">Cena(zł):</label>
+                    <input type="text" id="price" name="price" required>
                 </div>
 
-                <button class="btn btn-outline-light btn-lg px-5" type="submit">Zapisz zmiany</button>
+                <button class="btn btn-outline-light btn-lg px-5" type="submit">Dodaj usługę</button>
 
 
             </div>

@@ -21,11 +21,11 @@ class ContactController extends Controller
         ]);
 
         $message = new Message();
-        $message->name = $request->name;
-        $message->email = $request->email;
-        $message->message = $request->message;
+        $message->name = $request->input('name');
+        $message->email = $request->input('email');
+        $message->message = $request->input('message');
         $message->save();
 
-        return redirect()->back()->with('message', 'Dziękujemy za wiadomość!');
+        return redirect()->route('obs_pog.index')->with('success', 'Dziękujemy za wiadomość. Odezwiemy się jak najszybciej.');
     }
 }

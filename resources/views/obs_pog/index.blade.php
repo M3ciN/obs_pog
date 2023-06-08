@@ -83,26 +83,21 @@
 
     <div class="container col-sm-12 col-md-6 text-white" id="contact">
         <h1>Kontakt</h1>
-
-        @if(session('message'))
-            <p>{{ session('message') }}</p>
-        @endif
-
         <form method="POST" action="{{ route('contact.submit') }}">
             @csrf
 
             <div class="form-group mt-2 mb-3">
-                <label for="exampleFormControlInput1">Imię:</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
+                <label for="name">Imię:</label>
+                <input type="text" name="name" class="form-control" id="name">
             </div>
             <div class="form-group mt-2 mb-3">
-                <label for="exampleFormControlInput1">E-mail:</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1"
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" class="form-control" id="eamil"
                     placeholder="name@example.com">
             </div>
             <div class="form-group mb-3">
-                <label for="exampleFormControlTextarea1">Wiadomość:</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label for="message">Wiadomość:</label>
+                <textarea class="form-control" name="message" id="message" rows="5"></textarea>
             </div>
             <div class="form-group mb-3 d-flex justify-content-center">
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Wyślij</button>
