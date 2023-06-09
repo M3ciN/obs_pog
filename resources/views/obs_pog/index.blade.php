@@ -21,22 +21,22 @@
           <div class="carousel-item active">
             <img src="img/obsluga.jpg" class="d-block w-100" alt="obsluga">
             <div class="carousel-caption d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>Some representative placeholder content for the first slide.</p>
+              <h5>Pełen profesjonalizm</h5>
+              <p>Nasi wykwalifikowani pracownicy posiadają bogate doświadczenie w organizacji pogrzebów. Zapewnimy Ci kompleksową opiekę, dbając o każdy aspekt ceremonii.</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="img/trumny.jpg" class="d-block w-100" alt="trumny">
             <div class="carousel-caption d-none d-md-block">
-              <h5>Second slide label</h5>
-              <p>Some representative placeholder content for the second slide.</p>
+              <h5>Współczucie i wsparcie</h5>
+              <p>Wiemy, jak trudny jest czas straty i żałoby. Nasz zespół jest tutaj, aby Ci pomóc i służyć wsparciem na każdym etapie organizacji pogrzebu.</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="img/wiazanki.jpg" class="d-block w-100" alt="wiazanki">
             <div class="carousel-caption d-none d-md-block">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
+              <h5>Indywidualne podejście</h5>
+              <p>Rozumiemy, że każda ceremonia pogrzebowa jest wyjątkowa. Dlatego nasza obsługa jest całkowicie spersonalizowana, dostosowana do Twoich potrzeb i życzeń.</p>
             </div>
           </div>
         </div>

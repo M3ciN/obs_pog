@@ -28,4 +28,34 @@ class ContactController extends Controller
 
         return redirect()->route('obs_pog.index')->with('success', 'Dziękujemy za wiadomość. Odezwiemy się jak najszybciej.');
     }
+
+    public function showMessages()
+    {
+        $messages = Message::all();
+
+        return view('messages.index', compact('messages'));
+    }
+
+    public function replyForm($id)
+    {
+        $message = Message::findOrFail($id);
+
+        return view('reply-form', compact('message'));
+    }
+
+    public function sendReplyEmail(Request $request)
+    {
+        // Pobierz dane z formularza
+        $messageId = $request->input('message_id');
+        $replyMessage = $request->input('reply_message');
+
+        // Znajdź wiadomość na podstawie ID
+        $message = Message::findOrFail($messageId);
+
+        // Wysyłanie odpowiedzi email
+        // ...
+
+        // Przekierowanie lub wyświetlenie komunikatu sukcesu
+        // ...
+    }
 }

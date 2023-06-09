@@ -32,8 +32,13 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/services', [ServicesController::class, 'index'])->name('services.index');
 
-Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.form');
-Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
+Route::controller(ContactController::class)->group(function () {
+    Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.form');
+    Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
+    Route::get('/messages', [ContactController::class, 'showMessages'])->name('messages.index');
+    Route::get('/reply-form/{id}', [ContactController::class, 'replyForm'])->name('reply.form');
+    Route::post('/send-reply-email', [ContactController::class, 'sendReplyEmail'])->name('send.reply.email');
+});
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('/users', [UserController::class, 'showUsersWithRoleTwo'])->name('users.index')->middleware('admin');
