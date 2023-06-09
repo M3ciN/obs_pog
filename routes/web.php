@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,4 +57,10 @@ Route::controller(AuthController::class)->group(function () {
     Route::delete('/services/{id}', [ServicesController::class,'destroy'])->name('services.destroy');
     Route::post('/services', [ServicesController::class,'store'])->name('services.store');
     Route::get('/services/create', [ServicesController::class,'create'])->name('services.create');
+});
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/reservation/create', [ReservationController::class, 'create'])->name('reservation.create');
+    Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
+    Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
 });
