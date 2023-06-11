@@ -41,7 +41,7 @@
                 <ul class="dropdown-menu bg-black" aria-labelledby="navbarDropdownMenuLink">
                   <li><a class="dropdown-item text-white bg-black" href="{{ route('reservation.create') }}">Utwórz rezerwacje</a></li>
                   <li><a class="dropdown-item text-white bg-black" href="{{ route('reservations.index') }}">Moje rezerwacje</a></li>
-                  <li><a class="dropdown-item text-white bg-black" href="#">Edytuj dane</a></li>
+                  <li><a class="dropdown-item text-white bg-black" href="{{ route('profil.show') }}">Moje dane</a></li>
                   <li><a class="dropdown-item text-white bg-black" href="{{ route('logout') }}">{{ Auth::user()->name }}, wyloguj się...</a></li>
                 </ul>
               </li>

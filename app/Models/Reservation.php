@@ -25,4 +25,5 @@ class Reservation extends Model
     {
         return $this->belongsToMany(Service::class);
     }
+
 }

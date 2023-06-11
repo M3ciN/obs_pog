@@ -42,9 +42,9 @@ Route::controller(ContactController::class)->group(function () {
 });
 
 Route::controller(AuthController::class)->group(function () {
-    Route::get('/users', [UserController::class, 'showUsersWithRoleTwo'])->name('users.index')->middleware('admin');
-    Route::get('/users/{id}/edit', [UserController::class,'edit'])->name('users.edit');
-    Route::put('/users/{id}', [UserController::class,'update'])->name('users.update');
+    Route::get('/users', [UserController::class, 'showRTwo'])->name('users.index')->middleware('admin');
+    Route::get('/users/{id}/edit', [UserController::class,'editRTwo'])->name('users.edit');
+    Route::put('/users/{id}', [UserController::class,'updateRTwo'])->name('users.update');
     Route::get('/users/create', [UserController::class,'create'])->name('users.create');
     Route::post('/users', [UserController::class,'store'])->name('users.store');
     Route::delete('/users/{id}', [UserController::class,'destroy'])->name('users.destroy');
@@ -64,3 +64,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
 });
+
+// Wyświetlanie danych użytkownika
+Route::get('/profil', [UserController::class,'show'])->name('profil.show');
+
+// Formularz edycji danych użytkownika
+Route::get('/profil/edit', [UserController::class,'edit'])->name('profil.edit');
+Route::put('/profil', [UserController::class,'update'])->name('profil.update');
