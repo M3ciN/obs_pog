@@ -2,44 +2,57 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Reservation;
 use App\Models\Service;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Reservation;
 
 class ReservationController extends Controller
 {
     public function create()
     {
         $services = Service::all();
-        return view('reservations.create', compact('services'));
+
+        return view('reservation.create', compact('services'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
+        // Walidacja danych
+        $validatedData = $request->validate([
             'phone_number' => 'required',
             'address' => 'required',
-            'funeral_date' => 'required',
-            'service_id' => 'required|array',
-            'service_id.*' => 'exists:services,id',
-            'service_price' => 'required|array',
-            'service_price.*' => 'numeric|min:0',
+            'date' => 'required|date',
+            'time' => 'required',
+            'services' => 'required|array',
+            'services.*' => 'exists:services,id',
         ]);
 
+        // Pobierz zalogowanego użytkownika
+        $userId = Auth::id();
+
+        // Zapisz rezerwację w bazie danych
+        // Przykładowy kod zapisu:
         $reservation = new Reservation();
-        $reservation->user_id = auth()->user()->id;
-        $reservation->phone_number = $request->input('phone_number');
-        $reservation->address = $request->input('address');
-        $reservation->funeral_date = $request->input('funeral_date');
-        $reservation->service_id = $request->input('service_id');
+        $reservation->user_id = $userId;
+        $reservation->phone_number = $validatedData['phone_number'];
+        $reservation->address = $validatedData['address'];
+        $reservation->date = $validatedData['date'];
+        $reservation->time = $validatedData['time'];
         $reservation->save();
 
-        return redirect()->back()->with('success', 'Rezerwacja została zapisana.');
+        // Przypisanie usług do rezerwacji
+        $reservation->services()->attach($validatedData['services']);
+
+        // Przekierowanie po zapisaniu rezerwacji
+        return redirect()->route('reservation.create')->with('success', 'Rezerwacja została zapisana.');
     }
 
-    public function __construct()
+    public function index()
     {
-        $this->middleware('auth');
+        $user = Auth::user();
+        $reservations = $user->reservations()->with('services')->get();
+
+        return view('reservation.index', compact('reservations'));
     }
 }
-

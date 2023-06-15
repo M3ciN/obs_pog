@@ -11,11 +11,27 @@
             <a class="nav-link mx-2 active" aria-current="page" href="/">Główna</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-2" href="/services">Usługi</a>
+            <a class="nav-link mx-2" href="#services">Usługi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-2" href="/contact">Kontakt</a>
+            <a class="nav-link mx-2" href="#contact">Kontakt</a>
           </li>
+
+          @can('is-admin')
+          <li class="nav-item">
+
+            <li class="nav-item dropdown">
+                <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Panel administratora
+                </a>
+                <ul class="dropdown-menu bg-black" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item text-white bg-black" href="{{ route('users.index') }}">Użytkownicy</a></li>
+                    <li><a class="dropdown-item text-white bg-black" href="{{ route('services.index') }}">Usługi</a></li>
+                    <li><a class="dropdown-item text-white bg-black" href="{{ route('messages.index') }}">Wiadomości</a></li>
+                </ul>
+              </li>
+              @endcan
+
           <li class="nav-item">
             @if (Auth::check())
             <li class="nav-item dropdown">
@@ -23,12 +39,9 @@
                   Konto
                 </a>
                 <ul class="dropdown-menu bg-black" aria-labelledby="navbarDropdownMenuLink">
-                @can('is-admin')
-                    <li><a class="dropdown-item text-white bg-black" href="{{ route('users.index') }}">Lista użytkowników</a></li>
-                @endcan
-
-                  <li><a class="dropdown-item text-white bg-black" href="{{ route('reservations.create')}}">Rezerwuj obsługę</a></li>
-                  <li><a class="dropdown-item text-white bg-black" href="#">Moje rezereacje</a></li>
+                  <li><a class="dropdown-item text-white bg-black" href="{{ route('reservation.create') }}">Utwórz rezerwacje</a></li>
+                  <li><a class="dropdown-item text-white bg-black" href="{{ route('reservations.index') }}">Moje rezerwacje</a></li>
+                  <li><a class="dropdown-item text-white bg-black" href="{{ route('profil.show') }}">Moje dane</a></li>
                   <li><a class="dropdown-item text-white bg-black" href="{{ route('logout') }}">{{ Auth::user()->name }}, wyloguj się...</a></li>
                 </ul>
               </li>
