@@ -28,6 +28,8 @@ class ReservationController extends Controller
             'services.*' => 'exists:services,id',
         ]);
 
+
+
         // Pobierz zalogowanego użytkownika
         $userId = Auth::id();
 
@@ -39,7 +41,11 @@ class ReservationController extends Controller
         $reservation->address = $validatedData['address'];
         $reservation->date = $validatedData['date'];
         $reservation->time = $validatedData['time'];
+        $reservation->total_price = $request->input('total_price');
+        $reservation->pay_form = $request->input('pay_form');
         $reservation->save();
+
+
 
         // Przypisanie usług do rezerwacji
         $reservation->services()->attach($validatedData['services']);

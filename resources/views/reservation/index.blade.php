@@ -14,6 +14,8 @@
                 <th>Numer telefonu</th>
                 <th>Adres</th>
                 <th>Wybrane usługi</th>
+                <th>Suma ceny</th>
+                <th>Płatność</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +33,8 @@
                             @endforeach
                         </ul>
                     </td>
+                    <td>{{ $reservation->total_price }} zł</td>
+                    <td>{{ $reservation->pay_form }}</td>
                 </tr>
             @endforeach
         </tbody>

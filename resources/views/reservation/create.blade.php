@@ -54,10 +54,32 @@
 
             <div class="form-outline form-white mb-4">
                 <label for="services">Usługi:</label><br>
-                @foreach($services as $service)
-                    <input type="checkbox" name="services[]" value="{{ $service->id }}"> {{ $service->name }}<br>
+                @foreach ($services as $service)
+                    <div>
+                        <label>
+                            <input type="checkbox" name="services[]" value="{{ $service->id }}" data-price="{{ $service->price }}">
+                            {{ $service->name }} (Cena: {{ $service->price }})
+                        </label>
+                    </div>
+                    <script>
+                        console.log("Cena usługi: {{ $service->price }}");
+                    </script>
                 @endforeach
             </div><br>
+                <!-- Wyświetlanie sumy cen -->
+            <div>
+                <label for="total_price">Suma cen:</label>
+                <input type="text" id="total_price" name="total_price" readonly>
+            </div>
+
+    <!-- Wybór formy płatności -->
+            <div>
+                <label for="pay_form">Forma płatności:</label>
+                <select name="pay_form" id="pay_form">
+                    <option value="gotówka">Gotówka</option>
+                    <option value="online">Online</option>
+                </select>
+            </div>
 
             <button class="btn btn-outline-light btn-lg px-5" type="submit">Rezerwuj</button>
 
@@ -69,6 +91,29 @@
     </div>
   </div>
 </div>
+<script>
+    function calculateTotalPrice() {
+      let totalPrice = 0;
+      const checkboxes = document.querySelectorAll('input[name="services[]"]:checked');
+
+      checkboxes.forEach((checkbox) => {
+        const price = parseFloat(checkbox.getAttribute('data-price'));
+        if (!isNaN(price)) {
+          totalPrice += price;
+        }
+      });
+
+      // Ustawienie wartości sumy ceny usług w polu input
+      document.getElementById('total_price').value = totalPrice.toFixed(2);
+    }
+
+    // Nasłuchiwanie zmian w checkboxach
+    const checkboxes = document.querySelectorAll('input[name="services[]"]');
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener('change', calculateTotalPrice);
+    });
+    </script>
+
 
 
 @include('shared.footer')
