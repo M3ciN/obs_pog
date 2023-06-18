@@ -62,11 +62,24 @@ class ReservationController extends Controller
         return view('reservation.index', compact('reservations'));
     }
 
+    public function indexa()
+    {
+        $reservations = Reservation::with('user')->get();
+
+        return view('reservation.indexa', compact('reservations'));
+    }
+
     public function preview(Request $request)
     {
         // Pobierz wszystkie dane z żądania
         $data = $request->all();
 
         return redirect()->route('reservation.summary')->withInput($data);
+    }
+
+    public function show($id)
+    {
+        $reservation = Reservation::findOrFail($id);
+        return view('reservation.show', compact('reservation'));
     }
 }

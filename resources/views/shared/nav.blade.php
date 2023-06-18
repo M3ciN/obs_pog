@@ -28,6 +28,7 @@
                     <li><a class="dropdown-item text-white bg-black" href="{{ route('users.index') }}">Użytkownicy</a></li>
                     <li><a class="dropdown-item text-white bg-black" href="{{ route('services.index') }}">Usługi</a></li>
                     <li><a class="dropdown-item text-white bg-black" href="{{ route('messages.index') }}">Wiadomości</a></li>
+                    <li><a class="dropdown-item text-white bg-black" href="{{ route('reservations.indexa') }}">Rezerwacje</a></li>
                 </ul>
               </li>
               @endcan

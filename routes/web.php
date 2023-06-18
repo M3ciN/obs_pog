@@ -63,6 +63,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/reservation/create', [ReservationController::class, 'create'])->name('reservation.create');
     Route::post('/reservation/store', [ReservationController::class, 'store'])->name('reservation.store');
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
+
+    Route::get('/reservations/all', [ReservationController::class, 'indexa'])->name('reservations.indexa');
+    Route::get('/reservations/{id}', [ReservationController::class, 'show'])->name('reservations.show');
+
     Route::post('/reservation/preview', [ReservationController::class, 'preview'])->name('reservation.preview');
     Route::get('/reservation/summary', function () {
         return view('reservation.summary');
