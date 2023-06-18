@@ -41,24 +41,24 @@
                 <label for="address">Adres:</label>
                 <input type="text" name="address" class="form-control" required>
             </div>
+            <div class="row">
+                <div class="form-outline form-white mb-4 col-md-6">
+                    <label for="date">Data:</label>
+                    <input type="date" name="date" class="form-control" required>
+                </div>
 
-            <div class="form-outline form-white mb-4">
-                <label for="date">Data:</label>
-                <input type="date" name="date" class="form-control" required>
+                <div class="form-outline form-white mb-4 col-md-6">
+                    <label for="time">Godzina:</label>
+                    <input type="time" name="time" class="form-control" required>
+                </div>
             </div>
-
-            <div class="form-outline form-white mb-4">
-                <label for="time">Godzina:</label>
-                <input type="time" name="time" class="form-control" required>
-            </div>
-
             <div class="form-outline form-white mb-4">
                 <label for="services">Usługi:</label><br>
                 @foreach ($services as $service)
                     <div>
                         <label>
                             <input type="checkbox" name="services[]" value="{{ $service->id }}" data-price="{{ $service->price }}">
-                            {{ $service->name }} (Cena: {{ $service->price }})
+                            {{ $service->name }} | (Cena: {{ $service->price }})
                         </label>
                     </div>
                     <script>
@@ -67,14 +67,14 @@
                 @endforeach
             </div><br>
                 <!-- Wyświetlanie sumy cen -->
-            <div>
-                <label for="total_price">Suma cen:</label>
+            <div class="form-outline form-white mb-4">
+                <label for="total_price">Suma ceny:</label>
                 <input type="text" id="total_price" name="total_price" readonly>
             </div>
 
     <!-- Wybór formy płatności -->
-            <div>
-                <label for="pay_form">Forma płatności:</label>
+            <div class="mb-3">
+                <label for="pay_form" class="form-label">Forma płatności:</label>
                 <select name="pay_form" id="pay_form">
                     <option value="gotówka">Gotówka</option>
                     <option value="online">Online</option>
