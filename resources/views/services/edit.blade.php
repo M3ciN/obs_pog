@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 @include('shared.header')
-<body background="/img/tlo.jpg">
+<body background="/img/tlo.jpg" style="background-attachment: fixed">
     @include('shared.nav')
 
     <div class="row d-flex justify-content-center align-items-center h-100">

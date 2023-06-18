@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 @include('shared.header')
-<body background="/img/tlo.jpg">
+<body background="/img/tlo.jpg" style="background-attachment: fixed">
     @include('shared.nav')
 
 <div class="row d-flex justify-content-center align-items-center h-100">
@@ -29,7 +29,7 @@
           @endif
 
 
-      <form method="POST" action="{{ route('reservation.store') }}" class="needs-validation" novalidate>
+      <form method="POST" action="{{ route('reservation.preview') }}" class="needs-validation" novalidate>
               @csrf
 
               <div class="form-outline form-white mb-4">
@@ -81,7 +81,7 @@
                 </select>
             </div>
 
-            <button class="btn btn-outline-light btn-lg px-5" type="submit">Rezerwuj</button>
+            <button class="btn btn-outline-light btn-lg px-5" type="submit">Podsumowanie</button>
 
 
         </div>

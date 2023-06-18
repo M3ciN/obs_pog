@@ -61,4 +61,12 @@ class ReservationController extends Controller
 
         return view('reservation.index', compact('reservations'));
     }
+
+    public function preview(Request $request)
+    {
+        // Pobierz wszystkie dane z żądania
+        $data = $request->all();
+
+        return redirect()->route('reservation.summary')->withInput($data);
+    }
 }

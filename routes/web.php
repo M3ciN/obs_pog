@@ -61,8 +61,12 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/reservation/create', [ReservationController::class, 'create'])->name('reservation.create');
-    Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
+    Route::post('/reservation/store', [ReservationController::class, 'store'])->name('reservation.store');
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
+    Route::post('/reservation/preview', [ReservationController::class, 'preview'])->name('reservation.preview');
+    Route::get('/reservation/summary', function () {
+        return view('reservation.summary');
+    })->name('reservation.summary');
 });
 
 // Wyświetlanie danych użytkownika

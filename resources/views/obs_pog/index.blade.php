@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   @include('shared.header')
-  <body background="img/tlo.jpg">
+  <body background="img/tlo.jpg" style="background-attachment: fixed">
     <!-- Navigation bar -->
     @include('shared.nav')
     @if (session('success'))
