@@ -4,6 +4,13 @@
 <body background="/img/tlo.jpg" style="background-attachment: fixed">
     @include('shared.nav')
 
+    <div class="container py-5 h-100">
+        @if (session('error'))
+        <div class="row d-flex justify-content-center">
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        </div>
+        @endif
+
 <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
       <div class="card bg-black text-white" style="border-radius: 1rem;">

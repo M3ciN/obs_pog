@@ -3,6 +3,7 @@
 @include('shared.header')
 <body background="/img/tlo.jpg" style="background-attachment: fixed">
     @include('shared.nav')
+
     <div class="container mt-5 text-white">
     <h1>Wszystkie rezerwacje</h1>
     <table class="table bg-black text-white table-bordered">

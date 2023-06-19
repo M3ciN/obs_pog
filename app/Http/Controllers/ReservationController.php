@@ -74,6 +74,15 @@ class ReservationController extends Controller
         // Pobierz wszystkie dane z żądania
         $data = $request->all();
 
+        $validatedData = $request->validate([
+            'phone_number' => 'required',
+            'address' => 'required',
+            'date' => 'required|date',
+            'time' => 'required',
+            'services' => 'required|array',
+            'services.*' => 'exists:services,id',
+        ]);
+
         return redirect()->route('reservation.summary')->withInput($data);
     }
 

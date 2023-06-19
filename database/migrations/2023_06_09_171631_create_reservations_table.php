@@ -15,6 +15,8 @@ class CreateReservationsTable extends Migration
             $table->string('address');
             $table->date('date');
             $table->time('time');
+            $table->decimal('total_price');
+            $table->string('pay_form');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

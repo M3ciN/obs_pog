@@ -4,6 +4,13 @@
 <body background="/img/tlo.jpg" style="background-attachment: fixed">
     @include('shared.nav')
 
+    <div class="container py-5 h-100">
+        @if (session('error'))
+        <div class="row d-flex justify-content-center">
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        </div>
+        @endif
+
 <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
       <div class="card bg-black text-white" style="border-radius: 1rem;">
@@ -11,8 +18,8 @@
 
           <div class="mb-md-5 mt-md-4 pb-5">
 
-            <h2 class="fw-bold mb-2 ">Rezerwacja usług</h2>
-            <p class="text-white-50 mb-5">Rezerwujesz usługi pogrzebowe</p>
+            <h2 class="fw-bold mb-2 ">Podsumowanie rezerwacji</h2>
+            <p class="text-white-50 mb-5">Podsumowane dane rezerwacji usług</p>
 
           @if ($errors->any())
             <div class="row d-flex justify-content-center">
@@ -28,8 +35,6 @@
             </div>
           @endif
 
-
-          <h2>Podsumowanie rezerwacji:</h2>
           <p>Numer telefonu: {{ old('phone_number') }}</p>
           <p>Adres: {{ old('address') }}</p>
           <p>Data: {{ old('date') }}</p>
@@ -70,6 +75,7 @@
               <input type="hidden" name="pay_form" value="{{ old('pay_form') }}">
 
               <!-- Przycisk potwierdzenia rezerwacji -->
+              <br>
               <button class="btn btn-outline-light btn-lg px-5" type="submit">Potwierdź rezerwację</button>
           </form>
         </div>

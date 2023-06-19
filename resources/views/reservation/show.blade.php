@@ -4,6 +4,13 @@
 <body background="/img/tlo.jpg" style="background-attachment: fixed">
     @include('shared.nav')
 
+    <div class="container py-5 h-100">
+        @if (session('error'))
+        <div class="row d-flex justify-content-center">
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        </div>
+        @endif
+
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
           <div class="card bg-black text-white" style="border-radius: 1rem;">
@@ -28,8 +35,8 @@
 
 
     <div class="container mt-5 text-white">
-    <h1>Informacje o rezerwacji</h1>
-    <h2>ID: {{ $reservation->id }}</h2>
+    <h2>Informacje o rezerwacji</h2>
+    <h4>ID: {{ $reservation->id }}</h4>
 
     <p>Użytkownik: {{ $reservation->user->name }}</p>
     <p>Data: {{ $reservation->date }}</p>
