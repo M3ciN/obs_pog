@@ -59,9 +59,13 @@
                     <input type="time" name="time" class="form-control" required>
                 </div>
             </div>
-            <div class="form-outline form-white mb-4">
+            <div class="form-outline form-white mb-4" style="overflow-y: scroll">
                 <label for="services">Usługi:</label><br>
-                @foreach ($services as $service)
+                @foreach ($categories as $category)
+        <h4>{{ $category->name }}</h4>
+        @foreach ($category->subcategories as $subcategory)
+            <h5>{{ $subcategory->name }}</h5>
+                @foreach ($subcategory->services as $service)
                     <div>
                         <label>
                             <input type="checkbox" name="services[]" value="{{ $service->id }}" data-price="{{ $service->price }}">
@@ -72,6 +76,8 @@
                         console.log("Cena usługi: {{ $service->price }}");
                     </script>
                 @endforeach
+                        @endforeach
+    @endforeach
             </div><br>
                 <!-- Wyświetlanie sumy cen -->
             <div class="form-outline form-white mb-4">

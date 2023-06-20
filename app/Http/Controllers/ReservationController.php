@@ -6,14 +6,15 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
+use App\Models\Category;
 
 class ReservationController extends Controller
 {
     public function create()
     {
         $services = Service::all();
-
-        return view('reservation.create', compact('services'));
+        $categories = Category::all();
+        return view('reservation.create', compact('services', 'categories'));
     }
 
     public function store(Request $request)
