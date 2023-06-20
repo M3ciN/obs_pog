@@ -29,7 +29,7 @@
               @endif
 
 
-          <form method="POST" action="{{ route('services.update', $services->id) }}" class="needs-validation" novalidate>
+          <form method="POST" action="{{ route('services.update', $services->id) }}" class="needs-validation" novalidate enctype="multipart/form-data">
                   @csrf
                   @method('PUT')
                 <div class="form-outline form-white mb-4">
@@ -37,12 +37,27 @@
                     <input type="text" id="name" name="name" value="{{ $services->name }}">
                 </div>
                 <div class="form-outline form-white mb-4">
-                    <label for="opis">Opis:</label>
-                    <input type="text" id="opis" name="opis" value="{{ $services->opis }}">
+                    <label for="description">Opis:</label>
+                    <input type="text" id="description" name="description" value="{{ $services->description }}">
                 </div>
                 <div class="form-outline form-white mb-4">
                     <label for="price">Cena:</label>
                     <input type="text" id="price" name="price" value="{{ $services->price }}">
+                </div>
+                <div class="form-outline form-white mb-4">
+                    <label for="subcategory">Podkategoria:</label>
+                    <select id="subcategory" name="subcategory_id" class="form-select">
+                        <option value="">Wybierz podkategorię</option>
+                        @foreach ($subcategories as $subcategory)
+                            <option value="{{ $subcategory->id }}" {{ $services->subcategory_id == $subcategory->id ? 'selected' : '' }}>
+                                {{ $subcategory->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-outline form-white mb-4">
+                    <label for="image">Zdjęcie:</label>
+                    <input type="file" id="image" name="image">
                 </div>
 
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Zapisz zmiany</button>

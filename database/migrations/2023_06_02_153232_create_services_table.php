@@ -14,9 +14,13 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('opis')->nullable();
+            $table->text('description')->nullable();
             $table->decimal('price', 10, 2)->nullable();
+            $table->unsignedBigInteger('subcategory_id')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
+
+            $table->foreign('subcategory_id')->references('id')->on('subcategories');
         });
     }
 

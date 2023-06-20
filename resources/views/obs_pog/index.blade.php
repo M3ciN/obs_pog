@@ -51,10 +51,32 @@
       </div>
     </div><br><br><br>
 
-    <!-- Services -->
+    {{-- Services --}}
+    <div class="container mt-8 text-white col-md-8" id="services">
+        <div id="wycieczki" class="container mb-4">
+            <div class="row">
+                <h1>Usługi</h1>
+            </div><br>
+            <div class="row">
+                @foreach ($services as $service)
+                    <div class="col-md-3">
+                        <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
+                            <img src="{{asset('storage/img/' . $service->image) }}" class="card-img-top" alt="Service Image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $service->name }}</h5>
+                                <p class="card-text">{{ $service->description }}</p>
+                                <a href="{{ $service->link }}" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+    <!-- Cennik -->
 
     <div class="container mt-8 text-white col-md-8" id="services">
-        <h1>Lista usług</h1>
+        <h1>Cennik</h1>
         <table class="table bg-black text-white table-bordered">
             <thead>
                 <tr>

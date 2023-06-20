@@ -47,6 +47,20 @@
                     <input type="text" id="price" name="price" required>
                 </div>
 
+                <div class="form-outline form-white mb-4">
+                    <label for="subcategory">Podkategoria:</label>
+                    <select id="subcategory" name="subcategory_id" class="form-select">
+                        <option value="">Wybierz podkategorię</option>
+                        @foreach ($subcategories as $subcategory)
+                        <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                    @endforeach
+                    </select>
+                </div>
+                <div class="form-outline form-white mb-4">
+                    <label for="image">Zdjęcie:</label>
+                    <input type="file" id="image" name="image">
+                </div>
+
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Dodaj usługę</button>
 
 

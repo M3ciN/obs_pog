@@ -59,10 +59,12 @@
                     <input type="time" name="time" class="form-control" required>
                 </div>
             </div>
-            <div class="form-outline form-white mb-4" style="overflow-y: scroll">
-                <label for="services">Usługi:</label><br>
+
+            <label for="services">Usługi:</label><br><br>
+            <div class="form-outline form-white mb-4 catContainer">
+
                 @foreach ($categories as $category)
-        <h4>{{ $category->name }}</h4>
+        <h4>-{{ $category->name }}</h4>
         @foreach ($category->subcategories as $subcategory)
             <h5>{{ $subcategory->name }}</h5>
                 @foreach ($subcategory->services as $service)
