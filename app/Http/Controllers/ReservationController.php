@@ -84,6 +84,18 @@ class ReservationController extends Controller
             'services.*' => 'exists:services,id',
         ]);
 
+        $date = $request->input('date');
+        $time = $request->input('time');
+
+            // Sprawdź, czy istnieje już rezerwacja o danej dacie i godzinie
+    $existingReservation = Reservation::where('date', $date)
+    ->where('time', $time)
+    ->first();
+
+    if ($existingReservation) {
+        return redirect()->back()->with('error', 'Ta data i godzina są już zajęte. Wybierz inną.');
+    }
+
         return redirect()->route('reservation.summary')->withInput($data);
     }
 
@@ -91,5 +103,20 @@ class ReservationController extends Controller
     {
         $reservation = Reservation::findOrFail($id);
         return view('reservation.show', compact('reservation'));
+    }
+
+    public function destroy($id)
+    {
+        // Kod do usuwania rezerwacji o podanym $id
+
+
+        // Przykład:
+        $reservation = Reservation::findOrFail($id);
+        $reservation->services()->detach();
+        $reservation->delete();
+
+        // Możesz dodać dodatkową logikę lub przekierowanie po usunięciu rezerwacji
+
+        return redirect()->back()->with('success', 'Rezerwacja została usunięta.');
     }
 }

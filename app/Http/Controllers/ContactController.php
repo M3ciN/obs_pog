@@ -58,4 +58,13 @@ class ContactController extends Controller
         // Przekierowanie lub wyświetlenie komunikatu sukcesu
         // ...
     }
+
+    public function replyToMessage($messageId)
+{
+    $message = Message::findOrFail($messageId);
+    $email = $message->email;
+    $subject = "Odpowiedź na Twoją wiadomość";
+
+    return redirect("mailto:$email?subject=$subject");
+}
 }

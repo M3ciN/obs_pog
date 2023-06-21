@@ -47,8 +47,8 @@
                     <input type="password" id="password" name="password" value="{{ $user->password }}">
                 </div>
 
-                <button class="btn btn-outline-light btn-lg px-5" type="submit">Zapisz zmiany</button>
-
+                <button class="btn btn-outline-light btn-lg px-5" type="submit">Zapisz zmiany</button><br><br>
+                <a href="javascript:history.go(-1)" class="btn btn-outline-danger btn-lg px-5">Anuluj</a>
 
             </div>
           </form>

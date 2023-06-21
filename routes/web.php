@@ -74,6 +74,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/reservation/summary', function () {
         return view('reservation.summary');
     })->name('reservation.summary');
+
+    Route::delete('/reservations/{id}', [ReservationController::class, 'destroy'])->name('reservation.destroy');
 });
 
 // Wyświetlanie danych użytkownika

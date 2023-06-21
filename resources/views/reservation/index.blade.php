@@ -16,6 +16,7 @@
                 <th>Wybrane usługi</th>
                 <th>Suma ceny</th>
                 <th>Płatność</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -35,6 +36,13 @@
                     </td>
                     <td>{{ $reservation->total_price }} zł</td>
                     <td>{{ $reservation->pay_form }}</td>
+                    <td>
+                        <form action="{{ route('reservation.destroy', $reservation->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Czy na pewno chcesz zrezygnować z rezerwacji?')">Rezygnuj</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

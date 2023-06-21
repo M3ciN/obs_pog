@@ -4,6 +4,13 @@
 <body background="/img/tlo.jpg" style="background-attachment: fixed">
     @include('shared.nav')
 
+    <div class="container py-5 h-100">
+        @if (session('error'))
+        <div class="row d-flex justify-content-center">
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        </div>
+        @endif
+
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
           <div class="card bg-black text-white" style="border-radius: 1rem;">
@@ -44,7 +51,7 @@
                     <label for="price">Cena:</label>
                     <input type="text" id="price" name="price" value="{{ $services->price }}">
                 </div>
-                <div class="form-outline form-white mb-4">
+                <div class="form-outline form-white mb-4 col-md-6 mx-auto">
                     <label for="subcategory">Podkategoria:</label>
                     <select id="subcategory" name="subcategory_id" class="form-select">
                         <option value="">Wybierz podkategorię</option>
@@ -60,7 +67,9 @@
                     <input type="file" id="image" name="image">
                 </div>
 
-                <button class="btn btn-outline-light btn-lg px-5" type="submit">Zapisz zmiany</button>
+                <button class="btn btn-outline-light btn-lg px-5" type="submit">Zapisz zmiany</button><br><br>
+
+                <a href="javascript:history.go(-1)" class="btn btn-outline-danger btn-lg px-5">Anuluj</a>
 
 
             </div>

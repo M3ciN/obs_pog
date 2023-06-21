@@ -44,8 +44,13 @@
                 <input type="email" name="email" value="{{ $user->email }}">
               </div>
               <!-- Pozostałe pola formularza -->
+              <div class="form-outline form-white mb-4">
+                <label for="password">Hasło:</label>
+                <input type="password" id="password" name="password" value="{{ $user->password }}">
+            </div>
 
-              <button class="btn btn-outline-success btn-lg px-5" type="submit">Zapisz zmiany</button>
+              <button class="btn btn-outline-success btn-lg px-5" type="submit">Zapisz zmiany</button><br><br>
+              <a href="javascript:history.go(-1)" class="btn btn-outline-danger btn-lg px-5">Anuluj</a>
           </form>
         </div>
       </div>

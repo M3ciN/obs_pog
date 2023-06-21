@@ -56,9 +56,14 @@
 
                 <div class="form-outline form-white mb-4 col-md-6">
                     <label for="time">Godzina:</label>
-                    <input type="time" name="time" class="form-control" required>
+                    <input type="time" name="time" class="form-control" required step="3600">
                 </div>
             </div>
+            @if ($errors->has('error'))
+    <div class="alert alert-danger">
+        {{ $errors->first('error') }}
+    </div>
+@endif
 
             <label for="services">Usługi:</label><br><br>
             <div class="form-outline form-white mb-4 catContainer">
@@ -92,7 +97,7 @@
                 <label for="pay_form" class="form-label">Forma płatności:</label>
                 <select name="pay_form" id="pay_form">
                     <option value="gotówka">Gotówka</option>
-                    <option value="online">Online</option>
+                    {{-- <option value="online">Online</option> --}}
                 </select>
             </div>
 

@@ -22,7 +22,7 @@
                             <td>{{ $message->email }}</td>
                             <td>{{ $message->message }}</td>
                             <td>
-                                <a href="{{ route('reply.form', $message->id) }}" class="btn btn-primary">Odpowiedz</a>
+                                <a href="mailto:{{ $message->email }}?subject=Odpowiedź na Twoją wiadomość" class="btn btn-primary">Odpowiedz</a>
                             </td>
                         </tr>
                     @endforeach
