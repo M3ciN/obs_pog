@@ -3,7 +3,64 @@
   @include('shared.header')
   <body background="img/tlo.jpg" style="background-attachment: fixed">
     <!-- Navigation bar -->
-    @include('shared.nav')
+    <nav class="navbar navbar-expand-sm navbar-dark" id="neubar">
+        <div class="container">
+          <a class="navbar-brand" href="/"><img src="/img/mup_logo.png" height="60" /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto ">
+              <li class="nav-item">
+                <a class="nav-link mx-2 active" aria-current="page" href="/">Główna</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="#services">Usługi</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="#contact">Kontakt</a>
+              </li>
+
+              @can('is-admin')
+              <li class="nav-item">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Panel administratora
+                    </a>
+                    <ul class="dropdown-menu bg-black" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item text-white bg-black" href="{{ route('users.index') }}">Użytkownicy</a></li>
+                        <li><a class="dropdown-item text-white bg-black" href="{{ route('services.index') }}">Usługi</a></li>
+                        <li><a class="dropdown-item text-white bg-black" href="{{ route('messages.index') }}">Wiadomości</a></li>
+                        <li><a class="dropdown-item text-white bg-black" href="{{ route('reservations.indexa') }}">Rezerwacje</a></li>
+                    </ul>
+                  </li>
+                  @endcan
+
+              <li class="nav-item">
+                @if (Auth::check())
+                <li class="nav-item dropdown">
+                    <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Konto
+                    </a>
+                    <ul class="dropdown-menu bg-black" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item text-white bg-black" href="{{ route('reservation.create') }}">Utwórz rezerwacje</a></li>
+                      <li><a class="dropdown-item text-white bg-black" href="{{ route('reservations.index') }}">Moje rezerwacje</a></li>
+                      <li><a class="dropdown-item text-white bg-black" href="{{ route('profil.show') }}">Moje dane</a></li>
+                      <li><a class="dropdown-item text-white bg-black" href="{{ route('logout') }}">{{ Auth::user()->name }}, wyloguj się...</a></li>
+                    </ul>
+                  </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Zaloguj się...</a>
+                    </li>
+                @endif
+            </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -52,53 +109,36 @@
     </div><br><br><br>
 
     {{-- Services --}}
-    <div class="container mt-8 text-white col-md-8" id="services">
+    <div class="container mt-8 text-white col-md-8 justify-content-center" id="services">
         <div id="wycieczki" class="container mb-4">
             <div class="row">
                 <h1>Usługi</h1>
-            </div><br>
+            </div>
+            <div class="form-group mb-3 d-flex">
+                <a href="{{ route('services.indexa') }}" class="btn btn-outline-light btn-lg px-5" type="submit">Więcej usług...</a>
+            </div>
+            <br>
             <div class="row">
                 @foreach ($services as $service)
-                    <div class="col-md-3">
+                    <div class="services col-12 col-sm-6 col-lg-3">
                         <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
                             <img src="{{asset('storage/img/' . $service->image) }}" class="card-img-top" alt="Service Image">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $service->name }}</h5>
-                                <p class="card-text">{{ $service->description }}</p>
-                                <a href="{{ $service->link }}" class="btn btn-primary">Go somewhere</a>
+                                {{-- <p class="card-text">{{ $service->description }}</p> --}}
                             </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item text-bg-dark">{{ $service->subcategory->category->name }}</li>
+                                <li class="list-group-item text-bg-dark">{{ $service->subcategory->name }}</li>
+                                <li class="list-group-item text-bg-dark">Cena: {{ $service->price }} zł</li>
+                            </ul>
+                              <div class="card-body">
+                                <a href="{{ route('services.show', $service->id) }}" class="btn btn-outline-light">szczegóły...</a>
+                              </div>
                         </div>
                     </div>
                 @endforeach
             </div>
-        </div>
-
-    <!-- Cennik -->
-
-    <div class="container mt-8 text-white col-md-8" id="services">
-        <h1>Cennik</h1>
-        <table class="table bg-black text-white table-bordered">
-            <thead>
-                <tr>
-                    <th>Nazwa usługi</th>
-                    <th>Opis</th>
-                    <th>Cena(zł)</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($services as $service)
-                <tr>
-                    <td>{{ $service->name }}</td>
-                    <td>{{ $service->opis }}</td>
-                    <td>{{ $service->price }}</td>
-                </tr>
-                @empty
-                <tr>
-                    <th scope="row" colspan="6">Brak wycieczek.</th>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
         </div><br><br><br>
 
   <!-- Contact -->

@@ -51,12 +51,15 @@ Route::controller(AuthController::class)->group(function () {
 
 });
 
-Route::controller(AuthController::class)->group(function () {
+Route::controller(ServicesController::class)->group(function () {
     Route::get('/services/{id}/edit', [ServicesController::class,'edit'])->name('services.edit');
     Route::put('/services/{id}', [ServicesController::class,'update'])->name('services.update');
     Route::delete('/services/{id}', [ServicesController::class,'destroy'])->name('services.destroy');
     Route::post('/services', [ServicesController::class,'store'])->name('services.store');
     Route::get('/services/create', [ServicesController::class,'create'])->name('services.create');
+    Route::get('/services/all', [ServicesController::class, 'indexa'])->name('services.indexa');
+    Route::get('/services/{id}', [ServicesController::class, 'show'])->name('services.show');
+
 });
 
 Route::group(['middleware' => 'auth'], function () {

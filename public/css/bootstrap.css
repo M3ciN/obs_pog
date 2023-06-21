@@ -10909,3 +10909,14 @@ textarea.form-control-lg {
 	/* width:400px; */
 	height: 300px;
 	overflow-y: scroll; }
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1 0 18rem;
+  display: flex;
+  flex-direction: column;
+}

@@ -3,69 +3,6 @@
 @include('shared.header')
 <body background="/img/tlo.jpg" style="background-attachment: fixed">
     @include('shared.nav')
-    {{-- <div class="container mt-5 mb-5 text-white">
-        @if (session('error'))
-            <div class="row d-flex justify-content-center">
-                <div class="alert alert-danger">{{ session('error') }}</div>
-            </div>
-        @endif
-        <div class="row mt-4 mb-4 text-center">
-            <h1>Zaloguj się</h1>
-        </div>
-
-        @if ($errors->any())
-            <div class="row d-flex justify-content-center">
-                <div class="col-6">
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        @endif
-
-        <div class="row d-flex justify-content-center">
-            <div class="col-10 col-sm-10 col-md-6 col-lg-4">
-                <form method="POST" action="{{ route('register') }}">
-                    @csrf
-
-                    <div>
-                        <label for="name">Name</label>
-                        <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
-                        @error('name')
-                            <span>{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label for="email">Email</label>
-                        <input id="email" type="email" name="email" value="{{ old('email') }}" required>
-                        @error('email')
-                            <span>{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label for="password">Password</label>
-                        <input id="password" type="password" name="password" required>
-                        @error('password')
-                            <span>{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label for="password_confirmation">Confirm Password</label>
-                        <input id="password_confirmation" type="password" name="password_confirmation" required>
-                    </div>
-
-                    <button type="submit">Register</button>
-                </form>
-            </div>
-        </div>
-    </div> --}}
 
     <div class="container py-5 h-100">
         @if (session('error'))

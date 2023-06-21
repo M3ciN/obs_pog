@@ -29,7 +29,7 @@
               @endif
 
 
-          <form method="POST" action="{{ route('services.store') }}" class="needs-validation" novalidate>
+          <form method="POST" action="{{ route('services.store') }}" class="needs-validation" novalidate enctype="multipart/form-data">
                   @csrf
 
                 <div class="form-outline form-white mb-4">
@@ -38,8 +38,8 @@
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                    <label for="email">Opis:</label>
-                    <input type="text" id="opis" name="opis">
+                    <label for="description">Opis:</label>
+                    <input type="text" id="description" name="description">
                 </div>
 
                 <div class="form-outline form-white mb-4">

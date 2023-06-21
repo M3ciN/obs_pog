@@ -11,10 +11,10 @@
             <a class="nav-link mx-2 active" aria-current="page" href="/">Główna</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-2" href="#services">Usługi</a>
+            <a class="nav-link mx-2" href="{{ route('services.indexa')}}">Usługi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-2" href="#contact">Kontakt</a>
+            <a class="nav-link mx-2" href="{{ route('obs_pog.index')}}#contact">Kontakt</a>
           </li>
 
           @can('is-admin')

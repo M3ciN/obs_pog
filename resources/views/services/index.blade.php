@@ -12,6 +12,9 @@
                 <th>Nazwa usługi</th>
                 <th>Opis</th>
                 <th>Cena(zł)</th>
+                <th>Kategoria</th>
+                <th>Podkategoria</th>
+                <th>Obraz</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -21,8 +24,11 @@
             <tr>
                 <td>{{ $service->id }}</td>
                 <td>{{ $service->name }}</td>
-                <td>{{ $service->opis }}</td>
+                <td>{{ $service->description }}</td>
                 <td>{{ $service->price }}</td>
+                <td>{{ $service->subcategory->category->id }}. {{ $service->subcategory->category->name }}</td>
+                <td>{{ $service->subcategory->id }}. {{ $service->subcategory->name }}</td>
+                <td>{{ $service->image }}</td>
                 <td><a href="{{ route('services.edit', $service->id) }}" class="btn btn-outline-info px-3">Edytuj</a></td>
                 <td>
                     <form action="{{ route('services.destroy', $service->id) }}" method="POST">

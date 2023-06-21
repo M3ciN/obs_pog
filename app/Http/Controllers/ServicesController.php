@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\Subcategory;
+use App\Models\Category;
 
 class ServicesController extends Controller
 {
     public function index()
     {
-        $services = Service::all();
+        $services = Service::with('category', 'subcategory')->get();
 
         return view('services.index', ['services' => $services]);
     }
@@ -61,17 +62,19 @@ class ServicesController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'opis' => 'required',
+            'description' => 'required',
             'price' => 'required|numeric',
+            'subcategory_id' => 'required',
+            'image' => 'max:2048',
         ]);
 
         $service = new Service();
         $service->name = $request->input('name');
-        $service->opis = $request->input('opis');
+        $service->description = $request->input('description');
         $service->price = $request->input('price');
+        $service->subcategory_id = $request->input('subcategory_id');
 
         $subcategory_id = $request->input('subcategory');
-        $service->subcategory_id = $subcategory_id;
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -84,4 +87,18 @@ class ServicesController extends Controller
 
         return redirect()->route('services.index')->with('success', 'Usługa została dodana.');
     }
+
+    public function indexa()
+    {
+        $categories = Category::all();
+
+        return view('services.indexa', compact('categories'));
+    }
+
+    public function show($id)
+{
+    $service = Service::findOrFail($id);
+    return view('services.show', compact('service'));
+}
+
 }
