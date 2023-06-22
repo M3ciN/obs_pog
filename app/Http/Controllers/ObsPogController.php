@@ -9,7 +9,7 @@ class ObsPogController extends Controller
 {
     public function index()
     {
-        $services = Service::all();
+        $services = Service::inRandomOrder()->limit(4)->get();
         return view('obs_pog.index', compact('services'));
     }
 

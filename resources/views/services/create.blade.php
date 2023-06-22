@@ -61,8 +61,9 @@
                     <input type="file" id="image" name="image">
                 </div>
 
-                <button class="btn btn-outline-light btn-lg px-5" type="submit">Dodaj usługę</button>
+                <button class="btn btn-outline-light btn-lg px-5" type="submit">Dodaj usługę</button><br><br>
 
+                <a href="javascript:history.go(-1)" class="btn btn-outline-danger btn-lg px-5">Anuluj</a>
 
             </div>
           </form>

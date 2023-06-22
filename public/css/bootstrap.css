@@ -10916,7 +10916,7 @@ textarea.form-control-lg {
 }
 
 .card {
-  flex: 1 0 18rem;
+  flex: 1 1 16rem;
   display: flex;
   flex-direction: column;
 }

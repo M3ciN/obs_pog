@@ -8,10 +8,10 @@
     <h1>LISTA USŁUG</h1>
     @foreach ($categories as $category)
         <div class="category">
-            <h2>{{ $category->name }}</h2>
+            <ol><h2>{{ $category->name }}</h2></ol>
             @foreach ($category->subcategories as $subcategory)
                 <div class="subcategory">
-                    <h3>{{ $subcategory->name }}</h3>
+                    <ol><ol><h4>{{ $subcategory->name }}</h4></ol></ol>
                     <div class="row">
                     @foreach ($subcategory->services as $service)
                     <div class="services col-12 col-sm-6 col-lg-3">
@@ -19,7 +19,6 @@
                             <img src="{{asset('storage/img/' . $service->image) }}" class="card-img-top" alt="Service Image">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $service->name }}</h5>
-                                {{-- <p class="card-text">{{ $service->description }}</p> --}}
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item text-bg-dark">Cena: {{ $service->price }} zł</li>

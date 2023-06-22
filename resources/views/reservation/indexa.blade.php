@@ -24,7 +24,7 @@
                     <td>{{ $reservation->date }}</td>
                     <td>{{ $reservation->time }}</td>
                     <td>
-                        <a href="{{ route('reservations.show', $reservation->id) }}">Szczegóły</a>
+                        <a href="{{ route('reservations.show', $reservation->id) }}" class="btn btn-outline-info btn-lg ">Szczegóły</a>
                     </td>
                 </tr>
             @endforeach

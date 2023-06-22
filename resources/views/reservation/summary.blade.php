@@ -47,7 +47,7 @@
                       $service = \App\Models\Service::find($serviceId);
                       $quantity = old('quantities.' . $serviceId, 1);
                   @endphp
-                  <li>{{ $service->name }} (ilość: {{ $quantity }})</li>
+                  <li>{{ $service->name }} | (cena: {{ $service->price }})</li>
               @endforeach
           </ul>
 

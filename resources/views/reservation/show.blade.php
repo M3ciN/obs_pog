@@ -51,7 +51,7 @@
     <p>Suma ceny: {{ $reservation->total_price }} zł</p>
     <p>Opcja płatności: {{ $reservation->pay_form }}</p>
 
-<a href="{{ route('reservations.indexa') }}">Powrót do listy rezerwacji</a>
+<a href="{{ route('reservations.indexa') }}" class="btn btn-outline-light btn-lg">Powrót do listy rezerwacji</a>
     </div>
 </div>
 </div>

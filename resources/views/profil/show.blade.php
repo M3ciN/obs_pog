@@ -37,7 +37,7 @@
             <p>Imię: {{ $user->name }}</p>
             <p>Email: {{ $user->email }}</p>
 
-        <a href="{{ route('profil.edit') }}">Edytuj moje dane</a>
+        <a href="{{ route('profil.edit') }}" class="btn btn-outline-light btn-lg px-5">Edytuj moje dane</a>
         </div>
       </div>
     </div>

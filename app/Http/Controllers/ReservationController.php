@@ -52,7 +52,7 @@ class ReservationController extends Controller
         $reservation->services()->attach($validatedData['services']);
 
         // Przekierowanie po zapisaniu rezerwacji
-        return redirect()->route('reservation.create')->with('success', 'Rezerwacja została zapisana.');
+        return redirect()->route('obs_pog.index')->with('success', 'Rezerwacja została zapisana. Dziękujemy!');
     }
 
     public function index()
