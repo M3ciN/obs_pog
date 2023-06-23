@@ -32,19 +32,19 @@
           <form method="POST" action="{{ route('users.update', $user->id) }}" class="needs-validation" novalidate>
                   @csrf
                   @method('PUT')
-                <div class="form-outline form-white mb-4">
+                <div class="form-outline form-white mb-4 col-md-8 mx-auto">
                     <label for="name">Imię:</label>
-                    <input type="text" id="name" name="name" value="{{ $user->name }}">
+                    <input type="text" id="name" name="name" value="{{ $user->name }} " class="form-control">
                 </div>
 
-                <div class="form-outline form-white mb-4">
+                <div class="form-outline form-white mb-4 col-md-8 mx-auto">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" value="{{ $user->email }}">
+                    <input type="email" id="email" name="email" value="{{ $user->email }}" class="form-control">
                 </div>
 
-                <div class="form-outline form-white mb-4">
+                <div class="form-outline form-white mb-4 col-md-8 mx-auto">
                     <label for="password">Nowe hasło:</label>
-                    <input type="password" id="password" name="password" value="{{ $user->password }}">
+                    <input type="password" id="password" name="password" value="{{ $user->password }}" class="form-control">
                 </div>
 
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Zapisz zmiany</button><br><br>

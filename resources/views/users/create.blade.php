@@ -32,19 +32,19 @@
           <form method="POST" action="{{ route('users.store') }}" class="needs-validation" novalidate>
                   @csrf
 
-                <div class="form-outline form-white mb-4">
+                <div class="form-outline form-white mb-4 col-md-8 mx-auto">
                     <label for="name">Imię:</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" required class="form-control">
                 </div>
 
-                <div class="form-outline form-white mb-4">
+                <div class="form-outline form-white mb-4 col-md-8 mx-auto">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required class="form-control">
                 </div>
 
-                <div class="form-outline form-white mb-4">
+                <div class="form-outline form-white mb-4 col-md-8 mx-auto">
                     <label for="email">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" required class="form-control">
                 </div>
 
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Dodaj użytkownika</button>

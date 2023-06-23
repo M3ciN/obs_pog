@@ -89,7 +89,7 @@
                 <!-- Wyświetlanie sumy cen -->
             <div class="form-outline form-white mb-4">
                 <label for="total_price">Suma ceny:</label>
-                <input type="text" id="total_price" name="total_price" readonly>
+                <input type="text" id="total_price" name="total_price" readonly >
             </div>
 
     <!-- Wybór formy płatności -->

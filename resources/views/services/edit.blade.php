@@ -41,17 +41,17 @@
                   @method('PUT')
                 <div class="form-outline form-white mb-4">
                     <label for="name">Nazwa usługi:</label>
-                    <input type="text" id="name" name="name" value="{{ $services->name }}">
+                    <input type="text" id="name" name="name" value="{{ $services->name }}" class="form-control">
                 </div>
                 <div class="form-outline form-white mb-4">
                     <label for="description">Opis:</label>
-                    <input type="text" id="description" name="description" value="{{ $services->description }}">
+                    <textarea id="description" name="description" class="form-control" rows="5">{{ $services->description }}</textarea>
                 </div>
-                <div class="form-outline form-white mb-4">
+                <div class="form-outline form-white mb-4 col-md-8 mx-auto">
                     <label for="price">Cena:</label>
-                    <input type="text" id="price" name="price" value="{{ $services->price }}">
+                    <input type="text" id="price" name="price" value="{{ $services->price }}" class="form-control">
                 </div>
-                <div class="form-outline form-white mb-4 col-md-6 mx-auto">
+                <div class="form-outline form-white mb-4 col-md-8 mx-auto">
                     <label for="subcategory">Podkategoria:</label>
                     <select id="subcategory" name="subcategory_id" class="form-select">
                         <option value="">Wybierz podkategorię</option>
@@ -62,9 +62,9 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-outline form-white mb-4">
+                <div class="form-outline form-white mb-4 col-md-8 mx-auto">
                     <label for="image">Zdjęcie:</label>
-                    <input type="file" id="image" name="image">
+                    <input type="file" id="image" name="image" class="form-control">
                 </div>
 
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Zapisz zmiany</button><br><br>
